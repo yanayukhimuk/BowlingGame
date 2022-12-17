@@ -4,51 +4,54 @@ namespace BowlingGame.Tests
 {
     public class BowlingGameTests
     {
+        private Game _game;
+        private const int _laps = 20;
+        private int _pins;
+
         [SetUp]
         public void Setup()
         {
-            
+            _game = new Game();
         }
 
         [Test]
         //This test tests the game with 20 roll but zero score
         public void TestFullFailureGame()
         {
-            Game game = new Game();
+            _pins = 0;
 
-            for (int i = 0; i < 20; i++) 
-            {
-                game.Roll(0);
-            }
+            RollMany(_laps, _pins);
 
-            Assert.AreEqual(0, game.Score);
+            Assert.AreEqual(0, _game.Score);
         }
 
         [Test]  
         public void TestFullSuccessGame() 
         {
-            Game game = new Game();
+            _pins = 10;
 
-            for (int i = 0; i < 20; i++)
-            {
-                game.Roll(10);
-            }
+            RollMany(_laps, _pins);
 
-            Assert.AreEqual(200, game.Score);
+            Assert.AreEqual(200, _game.Score);
 
         }
 
         [Test]
         public void TestAllOnes()
         {
-            Game game = new Game();
+            _pins = 1;
 
-            for (int i = 0; i< 20; i++)
+            RollMany(_laps, _pins);
+
+            Assert.AreEqual(20, _game.Score);
+        }
+
+        private void RollMany (int laps, int pins)
+        {
+            for (int i = 0; i < laps; i++)
             {
-                game.Roll(1);
+                _game.Roll(pins);  
             }
-
-            Assert.AreEqual(20, game.Score);
         }
     }
 }
