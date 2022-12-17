@@ -5,13 +5,14 @@ namespace BowlingGame.Tests
     public class BowlingGameTests
     {
         private Game _game;
-        private const int _laps = 20;
+        private int _laps;
         private int _pins;
 
         [SetUp]
         public void Setup()
         {
             _game = new Game();
+            _laps = 20;
         }
 
         [Test]
