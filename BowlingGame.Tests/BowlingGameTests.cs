@@ -23,7 +23,7 @@ namespace BowlingGame.Tests
 
             RollMany(_laps, _pins);
 
-            Assert.AreEqual(0, _game.Score);
+            Assert.AreEqual(0, _game.Score());
         }
 
         [Test]  
@@ -33,8 +33,20 @@ namespace BowlingGame.Tests
 
             RollMany(_laps, _pins);
 
-            Assert.AreEqual(200, _game.Score);
+            Assert.AreEqual(200, _game.Score());
 
+        }
+
+        [Test]
+        public void TestOneSpare() 
+        {
+            _game.Roll(5);
+            _game.Roll(5);
+            _game.Roll(3);
+
+            RollMany(17,0);
+
+            Assert.AreEqual(16, _game.Score());
         }
 
         [Test]
@@ -44,7 +56,7 @@ namespace BowlingGame.Tests
 
             RollMany(_laps, _pins);
 
-            Assert.AreEqual(20, _game.Score);
+            Assert.AreEqual(20, _game.Score());
         }
 
         private void RollMany (int laps, int pins)
