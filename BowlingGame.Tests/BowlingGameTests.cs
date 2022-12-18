@@ -1,4 +1,5 @@
 using BowlingGameLib;
+using NUnit.Framework.Internal.Builders;
 
 namespace BowlingGame.Tests
 {
@@ -44,7 +45,7 @@ namespace BowlingGame.Tests
         [Test]  
         public void TestFullSuccessGame() 
         {
-            _laps = 20;
+            _laps = 12;
             
             for (int i = 0; i < _laps; i++) 
             {
